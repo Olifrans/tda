@@ -12,7 +12,7 @@
             box-sizing: border-box;
         }
 
-        /* FONTE INTER (FALLBACK SEGURO) */
+        /* FONTE INTER */
         @import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap');
 
         :root {
@@ -57,7 +57,13 @@
             --danger-600: #962e2e;
             --danger-700: #7c2424;
 
-            /* Tema Claro (padrão) */
+            --whatsapp-50: #e8f5e9;
+            --whatsapp-100: #c8e6c9;
+            --whatsapp-500: #25D366;
+            --whatsapp-600: #20B858;
+            --whatsapp-700: #1A9A4A;
+
+            /* Tema Claro */
             --bg-base: var(--neutral-50);
             --bg-surface: #ffffff;
             --bg-surface-hover: var(--neutral-100);
@@ -137,6 +143,7 @@
             flex-direction: column;
             transition: background-color 0.2s, border-color 0.2s;
             backdrop-filter: blur(8px);
+            z-index: 10;
         }
 
         .logo-container {
@@ -570,6 +577,144 @@
             font-weight: 500;
         }
 
+        /* ===== PERSPECTIVA FAMILIAR ===== */
+        .family-panel {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            margin-bottom: 32px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-light);
+            border-left: 4px solid var(--whatsapp-500);
+        }
+
+        .family-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .family-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--whatsapp-50);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: var(--whatsapp-600);
+        }
+
+        .family-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .family-subtitle {
+            color: var(--text-tertiary);
+            font-size: 0.9rem;
+        }
+
+        .family-metrics {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin: 20px 0;
+        }
+
+        .family-metric {
+            background: var(--bg-surface-hover);
+            padding: 16px;
+            border-radius: var(--radius-md);
+            text-align: center;
+        }
+
+        .family-metric-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--whatsapp-600);
+        }
+
+        .family-metric-label {
+            color: var(--text-tertiary);
+            font-size: 0.8rem;
+            margin-top: 4px;
+        }
+
+        .whatsapp-button {
+            background: var(--whatsapp-500);
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 8px 18px -6px var(--whatsapp-500);
+        }
+
+        .whatsapp-button:hover {
+            background: var(--whatsapp-600);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px -6px var(--whatsapp-600);
+        }
+
+        .feedback-list {
+            margin-top: 20px;
+        }
+
+        .feedback-item {
+            display: flex;
+            align-items: start;
+            gap: 12px;
+            padding: 16px;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .feedback-item:last-child {
+            border-bottom: none;
+        }
+
+        .feedback-avatar {
+            width: 40px;
+            height: 40px;
+            background: var(--primary-100);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-700);
+            font-weight: 600;
+        }
+
+        .feedback-content {
+            flex: 1;
+        }
+
+        .feedback-name {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .feedback-text {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+        }
+
+        .feedback-date {
+            color: var(--text-tertiary);
+            font-size: 0.75rem;
+        }
+
         /* ===== ALERTAS ===== */
         .alert-container {
             margin: 24px 0 28px;
@@ -826,6 +971,164 @@
             letter-spacing: 0.04em;
         }
 
+        /* ===== WHATSAPP CHAT SIMULADO ===== */
+        .chat-container {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 380px;
+            background: var(--bg-surface);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-xl);
+            border: 1px solid var(--border-light);
+            z-index: 1000;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .chat-container.minimized {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .chat-header {
+            background: var(--whatsapp-500);
+            color: white;
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+        }
+
+        .chat-header-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .chat-header-icon {
+            font-size: 1.5rem;
+        }
+
+        .chat-header-title {
+            font-weight: 600;
+        }
+
+        .chat-header-status {
+            font-size: 0.75rem;
+            opacity: 0.9;
+        }
+
+        .chat-messages {
+            height: 300px;
+            overflow-y: auto;
+            padding: 20px;
+            background: var(--bg-surface);
+        }
+
+        .chat-message {
+            margin-bottom: 16px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chat-message.family {
+            align-items: flex-start;
+        }
+
+        .chat-message.doctor {
+            align-items: flex-end;
+        }
+
+        .message-bubble {
+            max-width: 80%;
+            padding: 12px 16px;
+            border-radius: 18px;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        .family .message-bubble {
+            background: var(--bg-surface-hover);
+            border: 1px solid var(--border-light);
+            color: var(--text-primary);
+            border-bottom-left-radius: 4px;
+        }
+
+        .doctor .message-bubble {
+            background: var(--whatsapp-500);
+            color: white;
+            border-bottom-right-radius: 4px;
+        }
+
+        .message-time {
+            font-size: 0.65rem;
+            color: var(--text-tertiary);
+            margin-top: 4px;
+            margin-left: 8px;
+        }
+
+        .chat-input-area {
+            padding: 16px;
+            border-top: 1px solid var(--border-light);
+            display: flex;
+            gap: 12px;
+        }
+
+        .chat-input {
+            flex: 1;
+            padding: 12px 16px;
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-full);
+            background: var(--bg-surface);
+            color: var(--text-primary);
+            outline: none;
+        }
+
+        .chat-input:focus {
+            border-color: var(--whatsapp-500);
+        }
+
+        .chat-send {
+            width: 44px;
+            height: 44px;
+            background: var(--whatsapp-500);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .chat-send:hover {
+            background: var(--whatsapp-600);
+            transform: scale(1.05);
+        }
+
+        .chat-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: var(--danger-500);
+            color: white;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: 600;
+            border: 2px solid var(--bg-surface);
+        }
+
         /* ===== UTILITÁRIOS ===== */
         .hidden { display: none !important; }
         .mt-4 { margin-top: 24px; }
@@ -834,7 +1137,7 @@
         .gap-2 { gap: 8px; }
 
         @media print {
-            .sidebar, .topbar, .theme-switch-container, .btn { display: none !important; }
+            .sidebar, .topbar, .theme-switch-container, .btn, .chat-container { display: none !important; }
             .main-content { overflow: visible; }
             .content-pane { padding: 0; }
         }
@@ -873,6 +1176,11 @@
                 <span class="nav-icon">📄</span>
                 <span>Relatório</span>
             </div>
+            <div class="nav-label">FAMÍLIA</div>
+            <div class="nav-item" data-view="familia">
+                <span class="nav-icon">👪</span>
+                <span>Perspectiva Familiar</span>
+            </div>
         </nav>
 
         <div class="theme-switch-container">
@@ -903,6 +1211,43 @@
             <!-- Conteúdo dinâmico -->
         </div>
     </main>
+
+    <!-- WhatsApp Chat Flutuante -->
+    <div class="chat-container" id="chatContainer">
+        <div class="chat-header" id="chatHeader">
+            <div class="chat-header-left">
+                <span class="chat-header-icon">💬</span>
+                <div>
+                    <div class="chat-header-title">Famílias</div>
+                    <div class="chat-header-status">5 mensagens não lidas</div>
+                </div>
+            </div>
+            <span id="chatToggle">−</span>
+        </div>
+        <div class="chat-messages" id="chatMessages">
+            <div class="chat-message family">
+                <div class="message-bubble">Dra., o João está tendo mais dificuldades esta semana</div>
+                <span class="message-time">10:30</span>
+            </div>
+            <div class="chat-message doctor">
+                <div class="message-bubble">Pode me contar mais sobre o que observou?</div>
+                <span class="message-time">10:32</span>
+            </div>
+            <div class="chat-message family">
+                <div class="message-bubble">Ele não consegue terminar as tarefas e está muito inquieto</div>
+                <span class="message-time">10:33</span>
+            </div>
+            <div class="chat-message family">
+                <div class="message-bubble">A medicação está correta?</div>
+                <span class="message-time">10:33</span>
+            </div>
+        </div>
+        <div class="chat-input-area">
+            <input type="text" class="chat-input" placeholder="Responder família..." id="chatInput">
+            <button class="chat-send" id="chatSend">➤</button>
+        </div>
+        <div class="chat-badge" id="chatBadge">5</div>
+    </div>
 </div>
 
 <script>
@@ -911,16 +1256,19 @@
         const STORAGE_PACIENTES = 'tdap_pacientes_pro';
         const STORAGE_REGISTROS = 'tdap_registros_pro';
         const STORAGE_QUESTION = 'tdap_questionarios_pro';
+        const STORAGE_FAMILIA = 'tdap_familia_feedback';
+        const STORAGE_CHAT = 'tdap_chat_messages';
 
-        // Dados iniciais mais ricos
+        // Dados iniciais
         if (!localStorage.getItem(STORAGE_PACIENTES)) {
             localStorage.setItem(STORAGE_PACIENTES, JSON.stringify([
-                { id: 1, nome: 'João Silva', idade: 9, sexo: 'M', escola: 'EMEF Sol Nascente', serie: '3º ano', obs: 'Encaminhado pela escola' },
-                { id: 2, nome: 'Maria Clara', idade: 12, sexo: 'F', escola: 'Colégio Vida Nova', serie: '7º ano', obs: '' },
-                { id: 3, nome: 'Pedro Lima', idade: 8, sexo: 'M', escola: 'Instituto Criativo', serie: '2º ano', obs: 'Suspeita de TDAH' },
-                { id: 4, nome: 'Ana Beatriz', idade: 10, sexo: 'F', escola: 'Escola Alegria', serie: '5º ano', obs: '' }
+                { id: 1, nome: 'João Silva', idade: 9, sexo: 'M', escola: 'EMEF Sol Nascente', serie: '3º ano', obs: 'Encaminhado pela escola', responsavel: 'Maria Silva', telefone: '(11) 98765-4321' },
+                { id: 2, nome: 'Maria Clara', idade: 12, sexo: 'F', escola: 'Colégio Vida Nova', serie: '7º ano', obs: '', responsavel: 'Carlos Santos', telefone: '(11) 97654-3210' },
+                { id: 3, nome: 'Pedro Lima', idade: 8, sexo: 'M', escola: 'Instituto Criativo', serie: '2º ano', obs: 'Suspeita de TDAH', responsavel: 'Ana Lima', telefone: '(11) 96543-2109' },
+                { id: 4, nome: 'Ana Beatriz', idade: 10, sexo: 'F', escola: 'Escola Alegria', serie: '5º ano', obs: '', responsavel: 'Paulo Souza', telefone: '(11) 95432-1098' }
             ]));
         }
+
         if (!localStorage.getItem(STORAGE_REGISTROS)) {
             localStorage.setItem(STORAGE_REGISTROS, JSON.stringify([
                 { id: 101, pacienteId: 1, data: '2025-03-01', atencao: 4, hiper: 8, impul: 7, sono: 5, dificuldade: 6, coment: '' },
@@ -930,6 +1278,7 @@
                 { id: 105, pacienteId: 4, data: '2025-03-15', atencao: 6, hiper: 5, impul: 5, sono: 7, dificuldade: 4, coment: '' }
             ]));
         }
+
         if (!localStorage.getItem(STORAGE_QUESTION)) {
             localStorage.setItem(STORAGE_QUESTION, JSON.stringify([
                 { pacienteId: 1, pontuacao: 42, data: '2025-03-02' },
@@ -939,17 +1288,41 @@
             ]));
         }
 
+        if (!localStorage.getItem(STORAGE_FAMILIA)) {
+            localStorage.setItem(STORAGE_FAMILIA, JSON.stringify([
+                { id: 1, pacienteId: 1, nome: 'Maria Silva', relacao: 'Mãe', feedback: 'João está mais agitado em casa', data: '2025-03-17', tipo: 'preocupacao' },
+                { id: 2, pacienteId: 1, nome: 'Maria Silva', relacao: 'Mãe', feedback: 'Melhorou na concentração', data: '2025-03-15', tipo: 'melhora' },
+                { id: 3, pacienteId: 2, nome: 'Carlos Santos', relacao: 'Pai', feedback: 'Maria está mais calma', data: '2025-03-14', tipo: 'melhora' },
+                { id: 4, pacienteId: 3, nome: 'Ana Lima', relacao: 'Mãe', feedback: 'Preocupada com o sono', data: '2025-03-16', tipo: 'preocupacao' }
+            ]));
+        }
+
+        if (!localStorage.getItem(STORAGE_CHAT)) {
+            localStorage.setItem(STORAGE_CHAT, JSON.stringify([
+                { id: 1, remetente: 'familia', pacienteId: 1, mensagem: 'Dra., o João está tendo mais dificuldades esta semana', timestamp: '2025-03-18T10:30:00', lida: false },
+                { id: 2, remetente: 'medico', pacienteId: 1, mensagem: 'Pode me contar mais sobre o que observou?', timestamp: '2025-03-18T10:32:00', lida: true },
+                { id: 3, remetente: 'familia', pacienteId: 1, mensagem: 'Ele não consegue terminar as tarefas e está muito inquieto', timestamp: '2025-03-18T10:33:00', lida: false },
+                { id: 4, remetente: 'familia', pacienteId: 1, mensagem: 'A medicação está correta?', timestamp: '2025-03-18T10:33:30', lida: false }
+            ]));
+        }
+
         // ========== ESTADO GLOBAL ==========
         let currentView = 'dashboard';
         let pacienteSelecionado = 1;
+        let chatMinimized = false;
 
         // ========== HELPERS ==========
         const getPacientes = () => JSON.parse(localStorage.getItem(STORAGE_PACIENTES)) || [];
         const getRegistros = () => JSON.parse(localStorage.getItem(STORAGE_REGISTROS)) || [];
         const getQuestionarios = () => JSON.parse(localStorage.getItem(STORAGE_QUESTION)) || [];
+        const getFeedbacks = () => JSON.parse(localStorage.getItem(STORAGE_FAMILIA)) || [];
+        const getChatMessages = () => JSON.parse(localStorage.getItem(STORAGE_CHAT)) || [];
+        
         const savePacientes = (arr) => localStorage.setItem(STORAGE_PACIENTES, JSON.stringify(arr));
         const saveRegistros = (arr) => localStorage.setItem(STORAGE_REGISTROS, JSON.stringify(arr));
         const saveQuestionarios = (arr) => localStorage.setItem(STORAGE_QUESTION, JSON.stringify(arr));
+        const saveFeedbacks = (arr) => localStorage.setItem(STORAGE_FAMILIA, JSON.stringify(arr));
+        const saveChatMessages = (arr) => localStorage.setItem(STORAGE_CHAT, JSON.stringify(arr));
 
         function calcularRisco(pacienteId) {
             const registros = getRegistros().filter(r => r.pacienteId === pacienteId);
@@ -989,7 +1362,16 @@
             if (ultimo.hiper > 7) alertas.push('Hiperatividade acima do limiar clínico');
             const risco = calcularRisco(pacienteId);
             if (risco > 60) alertas.push('Score preditivo indica risco elevado de TDA');
+            
+            // Alertas baseados em feedback familiar
+            const feedbacks = getFeedbacks().filter(f => f.pacienteId === pacienteId && f.tipo === 'preocupacao');
+            if (feedbacks.length > 2) alertas.push('Múltiplas preocupações familiares registradas');
+            
             return alertas;
+        }
+
+        function getNaoLidasCount() {
+            return getChatMessages().filter(m => m.remetente === 'familia' && !m.lida).length;
         }
 
         // ========== RENDERIZAÇÃO ==========
@@ -1000,7 +1382,8 @@
                 'cadastro': 'Cadastro · pacientes',
                 'registro': 'Registro · comportamento',
                 'questionario': 'Questionário · TDA',
-                'relatorio': 'Relatório · análise completa'
+                'relatorio': 'Relatório · análise completa',
+                'familia': 'Perspectiva Familiar · engajamento'
             };
             document.getElementById('pageTitle').innerHTML = titleMap[view]?.split('·')[0] + ' <span>· ' + titleMap[view]?.split('·')[1] + '</span>';
 
@@ -1009,11 +1392,13 @@
             else if (view === 'registro') renderRegistro(pane);
             else if (view === 'questionario') renderQuestionario(pane);
             else if (view === 'relatorio') renderRelatorio(pane);
+            else if (view === 'familia') renderFamilia(pane);
         }
 
         function renderDashboard(pane) {
             const pacientes = getPacientes();
             const registros = getRegistros();
+            const feedbacks = getFeedbacks();
             const totalPacientes = pacientes.length;
             let somaAtencao = 0, somaHiper = 0, countReg = 0;
             registros.forEach(r => { somaAtencao += r.atencao; somaHiper += r.hiper; countReg++; });
@@ -1022,6 +1407,7 @@
             const riscoAtual = calcularRisco(pacienteSelecionado);
             const alertas = gerarAlertas(pacienteSelecionado);
             const ultimosRegistros = [...registros].reverse().slice(0, 5);
+            const feedbacksRecentes = feedbacks.slice(-3).reverse();
 
             pane.innerHTML = `
                 <div class="metric-grid">
@@ -1055,6 +1441,31 @@
                     ${alertas.map(a => `<div class="alert-item"><span class="alert-icon">⚠️</span>${a}</div>`).join('')}
                 </div>
                 ` : ''}
+
+                <!-- Perspectiva Familiar no Dashboard -->
+                <div class="family-panel">
+                    <div class="family-header">
+                        <div class="family-icon">👪</div>
+                        <div>
+                            <div class="family-title">Feedback das Famílias</div>
+                            <div class="family-subtitle">Últimas comunicações</div>
+                        </div>
+                    </div>
+                    <div class="feedback-list">
+                        ${feedbacksRecentes.map(f => {
+                            const paciente = pacientes.find(p => p.id === f.pacienteId);
+                            return `
+                            <div class="feedback-item">
+                                <div class="feedback-avatar">${f.nome.charAt(0)}</div>
+                                <div class="feedback-content">
+                                    <div class="feedback-name">${f.nome} · ${paciente?.nome || 'Paciente'}</div>
+                                    <div class="feedback-text">${f.feedback}</div>
+                                    <div class="feedback-date">${f.data} · ${f.relacao}</div>
+                                </div>
+                            </div>
+                        `}).join('')}
+                    </div>
+                </div>
 
                 <div class="charts-row">
                     <div class="chart-panel">
@@ -1115,6 +1526,10 @@
                     </div>
                     <div class="form-row">
                         <div class="form-group"><label class="form-label">Série</label><input class="form-control" id="cadSerie" value="3º ano"></div>
+                        <div class="form-group"><label class="form-label">Responsável</label><input class="form-control" id="cadResponsavel" placeholder="Nome do responsável"></div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group"><label class="form-label">Telefone</label><input class="form-control" id="cadTelefone" placeholder="(11) 98765-4321"></div>
                         <div class="form-group"><label class="form-label">Observações</label><input class="form-control" id="cadObs" placeholder="Observações clínicas"></div>
                     </div>
                     <button class="btn" id="salvarPacienteBtn">Salvar paciente</button>
@@ -1124,9 +1539,9 @@
                     <div class="table-header"><span class="table-title">📌 Pacientes cadastrados</span></div>
                     <div class="table-container">
                         <table>
-                            <thead><tr><th>ID</th><th>Nome</th><th>Idade</th><th>Escola</th><th></th></tr></thead>
+                            <thead><tr><th>ID</th><th>Nome</th><th>Idade</th><th>Responsável</th><th>Telefone</th><th></th></tr></thead>
                             <tbody>
-                                ${getPacientes().map(p => `<tr><td>${p.id}</td><td>${p.nome}</td><td>${p.idade}</td><td>${p.escola}</td><td><button class="btn-outline btn-sm" data-set-paciente="${p.id}">Selecionar</button></td></tr>`).join('')}
+                                ${getPacientes().map(p => `<tr><td>${p.id}</td><td>${p.nome}</td><td>${p.idade}</td><td>${p.responsavel || '-'}</td><td>${p.telefone || '-'}</td><td><button class="btn-outline btn-sm" data-set-paciente="${p.id}">Selecionar</button></td></tr>`).join('')}
                             </tbody>
                         </table>
                     </div>
@@ -1143,6 +1558,8 @@
                     sexo: document.getElementById('cadSexo').value,
                     escola: document.getElementById('cadEscola').value,
                     serie: document.getElementById('cadSerie').value,
+                    responsavel: document.getElementById('cadResponsavel').value,
+                    telefone: document.getElementById('cadTelefone').value,
                     obs: document.getElementById('cadObs').value
                 });
                 savePacientes(pacientes);
@@ -1216,7 +1633,7 @@
 
             document.getElementById('salvarQuestBtn')?.addEventListener('click', () => {
                 const total = [1,2,3,4,5].map(i => +document.getElementById(`q${i}`).value).reduce((a,b)=>a+b,0);
-                const pontuacao = total * 4; // escala 0-60
+                const pontuacao = total * 4;
                 const questoes = getQuestionarios();
                 questoes.push({ pacienteId: pacienteSelecionado, pontuacao, data: new Date().toISOString().slice(0,10) });
                 saveQuestionarios(questoes);
@@ -1226,8 +1643,9 @@
         }
 
         function renderRelatorio(pane) {
-            const p = getPacientes().find(p => p.id === pacienteSelecionado) || { nome: '---', idade: '-', escola: '-' };
+            const p = getPacientes().find(p => p.id === pacienteSelecionado) || { nome: '---', idade: '-', escola: '-', responsavel: '-', telefone: '-' };
             const registros = getRegistros().filter(r => r.pacienteId === pacienteSelecionado);
+            const feedbacks = getFeedbacks().filter(f => f.pacienteId === pacienteSelecionado);
             const risco = calcularRisco(pacienteSelecionado);
             const mediaAtencao = registros.length ? (registros.reduce((a,r)=>a+r.atencao,0)/registros.length).toFixed(1) : 'N/A';
             const mediaHiper = registros.length ? (registros.reduce((a,r)=>a+r.hiper,0)/registros.length).toFixed(1) : 'N/A';
@@ -1238,6 +1656,7 @@
                         <div>
                             <h1 class="report-title">Relatório Clínico</h1>
                             <div class="report-subtitle">Paciente: ${p.nome} · ID ${pacienteSelecionado}</div>
+                            <div class="report-subtitle">Responsável: ${p.responsavel} · ${p.telefone}</div>
                         </div>
                         <button class="btn-outline btn-sm" onclick="window.print()">🖨️ Imprimir</button>
                     </div>
@@ -1256,6 +1675,24 @@
                         </div>
                     </div>
 
+                    ${feedbacks.length ? `
+                    <div style="margin:32px 0">
+                        <h3 style="margin-bottom:16px;color:var(--text-secondary)">Feedback da Família</h3>
+                        <div class="feedback-list">
+                            ${feedbacks.map(f => `
+                                <div class="feedback-item">
+                                    <div class="feedback-avatar">${f.nome.charAt(0)}</div>
+                                    <div class="feedback-content">
+                                        <div class="feedback-name">${f.nome} · ${f.relacao}</div>
+                                        <div class="feedback-text">${f.feedback}</div>
+                                        <div class="feedback-date">${f.data}</div>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                    ` : ''}
+
                     <div class="table-wrapper">
                         <div class="table-header"><span class="table-title">Histórico de Registros</span></div>
                         <div class="table-container">
@@ -1271,6 +1708,164 @@
             `;
         }
 
+        function renderFamilia(pane) {
+            const pacientes = getPacientes();
+            const feedbacks = getFeedbacks();
+
+            pane.innerHTML = `
+                <div class="family-panel">
+                    <div class="family-header">
+                        <div class="family-icon">👪</div>
+                        <div>
+                            <div class="family-title">Engajamento Familiar</div>
+                            <div class="family-subtitle">Comunicação e feedback dos responsáveis</div>
+                        </div>
+                    </div>
+                    
+                    <div class="family-metrics">
+                        <div class="family-metric">
+                            <div class="family-metric-value">${feedbacks.length}</div>
+                            <div class="family-metric-label">Feedbacks totais</div>
+                        </div>
+                        <div class="family-metric">
+                            <div class="family-metric-value">${feedbacks.filter(f => f.tipo === 'preocupacao').length}</div>
+                            <div class="family-metric-label">Preocupações</div>
+                        </div>
+                        <div class="family-metric">
+                            <div class="family-metric-value">${feedbacks.filter(f => f.tipo === 'melhora').length}</div>
+                            <div class="family-metric-label">Melhoras relatadas</div>
+                        </div>
+                    </div>
+
+                    <button class="whatsapp-button" id="whatsappFamiliaBtn">
+                        <span>💬</span> Enviar atualização via WhatsApp
+                    </button>
+                </div>
+
+                <div class="form-card">
+                    <h2 class="form-title">📝 Registrar Feedback Familiar</h2>
+                    <div class="form-row">
+                        <div class="form-group"><label class="form-label">Paciente</label>
+                            <select class="form-control" id="feedbackPaciente">
+                                ${pacientes.map(p => `<option value="${p.id}">${p.nome}</option>`).join('')}
+                            </select>
+                        </div>
+                        <div class="form-group"><label class="form-label">Responsável</label>
+                            <input class="form-control" id="feedbackResponsavel" placeholder="Nome do responsável">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group"><label class="form-label">Relação</label>
+                            <select class="form-control" id="feedbackRelacao">
+                                <option>Mãe</option><option>Pai</option><option>Avó/Avô</option><option>Responsável legal</option>
+                            </select>
+                        </div>
+                        <div class="form-group"><label class="form-label">Tipo</label>
+                            <select class="form-control" id="feedbackTipo">
+                                <option value="preocupacao">Preocupação</option>
+                                <option value="melhora">Melhora observada</option>
+                                <option value="duvida">Dúvida</option>
+                                <option value="info">Informação geral</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Mensagem</label>
+                        <textarea class="form-control" id="feedbackMensagem" rows="3"></textarea>
+                    </div>
+                    <button class="btn" id="salvarFeedbackBtn">Salvar Feedback</button>
+                </div>
+
+                <div class="table-wrapper">
+                    <div class="table-header"><span class="table-title">📋 Histórico de Feedbacks</span></div>
+                    <div class="table-container">
+                        <table>
+                            <thead><tr><th>Data</th><th>Paciente</th><th>Responsável</th><th>Tipo</th><th>Mensagem</th></tr></thead>
+                            <tbody>
+                                ${feedbacks.sort((a,b) => b.data.localeCompare(a.data)).map(f => {
+                                    const paciente = pacientes.find(p => p.id === f.pacienteId);
+                                    return `<tr>
+                                        <td>${f.data}</td>
+                                        <td>${paciente?.nome || '---'}</td>
+                                        <td>${f.nome}</td>
+                                        <td><span class="risk-tag ${f.tipo === 'preocupacao' ? 'risk-high' : 'risk-low'}">${f.tipo}</span></td>
+                                        <td>${f.feedback}</td>
+                                    </tr>`;
+                                }).join('')}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('whatsappFamiliaBtn')?.addEventListener('click', () => {
+                const paciente = pacientes.find(p => p.id === pacienteSelecionado);
+                const mensagem = encodeURIComponent(`Olá ${paciente?.responsavel || 'família'}, atualização sobre ${paciente?.nome}: o score preditivo atual é ${calcularRisco(pacienteSelecionado)} (${interpretarRisco(calcularRisco(pacienteSelecionado))}). Qualquer dúvida, estamos à disposição.`);
+                window.open(`https://wa.me/55${paciente?.telefone?.replace(/\D/g, '') || '11999999999'}?text=${mensagem}`, '_blank');
+            });
+
+            document.getElementById('salvarFeedbackBtn')?.addEventListener('click', () => {
+                const feedbacks = getFeedbacks();
+                const newId = feedbacks.length ? Math.max(...feedbacks.map(f=>f.id)) + 1 : 1;
+                feedbacks.push({
+                    id: newId,
+                    pacienteId: +document.getElementById('feedbackPaciente').value,
+                    nome: document.getElementById('feedbackResponsavel').value,
+                    relacao: document.getElementById('feedbackRelacao').value,
+                    tipo: document.getElementById('feedbackTipo').value,
+                    feedback: document.getElementById('feedbackMensagem').value,
+                    data: new Date().toISOString().slice(0,10)
+                });
+                saveFeedbacks(feedbacks);
+                renderView('familia');
+            });
+        }
+
+        // ========== CHAT WHATSAPP ==========
+        function updateChatBadge() {
+            const badge = document.getElementById('chatBadge');
+            const count = getNaoLidasCount();
+            badge.textContent = count;
+            badge.style.display = count > 0 ? 'flex' : 'none';
+            
+            const status = document.querySelector('.chat-header-status');
+            if (status) {
+                status.textContent = count > 0 ? `${count} mensagem${count > 1 ? 's' : ''} não lida${count > 1 ? 's' : ''}` : 'Todas lidas';
+            }
+        }
+
+        function addChatMessage(remetente, mensagem, pacienteId = 1) {
+            const messages = getChatMessages();
+            messages.push({
+                id: messages.length + 1,
+                remetente,
+                pacienteId,
+                mensagem,
+                timestamp: new Date().toISOString(),
+                lida: remetente === 'medico'
+            });
+            saveChatMessages(messages);
+            renderChatMessages();
+            updateChatBadge();
+        }
+
+        function renderChatMessages() {
+            const container = document.getElementById('chatMessages');
+            const messages = getChatMessages().slice(-10);
+            
+            container.innerHTML = messages.map(m => {
+                const time = new Date(m.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+                return `
+                    <div class="chat-message ${m.remetente === 'familia' ? 'family' : 'doctor'}">
+                        <div class="message-bubble">${m.mensagem}</div>
+                        <span class="message-time">${time}</span>
+                    </div>
+                `;
+            }).join('');
+            
+            container.scrollTop = container.scrollHeight;
+        }
+
         // ========== NAVEGAÇÃO ==========
         document.querySelectorAll('.nav-item').forEach(item => {
             item.addEventListener('click', () => {
@@ -1281,6 +1876,43 @@
             });
         });
 
+        // ========== CHAT TOGGLE ==========
+        const chatContainer = document.getElementById('chatContainer');
+        const chatHeader = document.getElementById('chatHeader');
+        const chatToggle = document.getElementById('chatToggle');
+        const chatInput = document.getElementById('chatInput');
+        const chatSend = document.getElementById('chatSend');
+
+        chatHeader.addEventListener('click', (e) => {
+            if (e.target === chatToggle) {
+                chatMinimized = !chatMinimized;
+                chatContainer.classList.toggle('minimized', chatMinimized);
+                chatToggle.textContent = chatMinimized ? '+' : '−';
+                if (!chatMinimized) {
+                    renderChatMessages();
+                }
+            } else {
+                chatMinimized = false;
+                chatContainer.classList.remove('minimized');
+                chatToggle.textContent = '−';
+                renderChatMessages();
+            }
+        });
+
+        chatSend.addEventListener('click', () => {
+            if (chatInput.value.trim()) {
+                addChatMessage('medico', chatInput.value, pacienteSelecionado);
+                chatInput.value = '';
+            }
+        });
+
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' && chatInput.value.trim()) {
+                addChatMessage('medico', chatInput.value, pacienteSelecionado);
+                chatInput.value = '';
+            }
+        });
+
         // ========== TEMA ==========
         document.getElementById('themeSwitch').addEventListener('click', () => {
             document.body.classList.toggle('dark-mode');
@@ -1288,6 +1920,24 @@
 
         // ========== INICIALIZAÇÃO ==========
         renderView('dashboard');
+        renderChatMessages();
+        updateChatBadge();
+
+        // Simular mensagens periódicas das famílias
+        setInterval(() => {
+            if (Math.random() > 0.7) {
+                const familias = ['Maria Silva', 'Carlos Santos', 'Ana Lima'];
+                const mensagens = [
+                    'Como está evolução essa semana?',
+                    'Observamos melhora na concentração',
+                    'Continua com dificuldade para dormir',
+                    'A medicação está fazendo efeito?'
+                ];
+                const randomFamilia = familias[Math.floor(Math.random() * familias.length)];
+                const randomMsg = mensagens[Math.floor(Math.random() * mensagens.length)];
+                addChatMessage('familia', `${randomFamilia}: ${randomMsg}`, 1);
+            }
+        }, 30000);
     })();
 </script>
 </body>
